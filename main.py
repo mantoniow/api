@@ -17,26 +17,15 @@ def create_country(endpoint, data):
     response = requests.post(url, json=data)
     return response.json()
 
-# FECTH DATA COUNTRIES
-
+# FECTH DATA ALL COUNTRIES
 all_countries = get_country('all')
 print('All countries:', all_countries)
 
-#TRY TO GET DATA FOR TREE COUNTRIES (US, DE, GB)
-
-countries = ['US', 'DE', 'GB']
-for country_code in countries:
-    country_data = get_country(f'alpha/{country_code}')
-    if 'name' in country_data:
-        print(f'Country {country_code}:', country_data)
-    else:
-        print(f'Country {country_code} not found.')
 
 #EXECUTE INDIVIDUALLY, CAN REPLACE country_code ['US', 'DE', 'GB']
 country_code = 'US'
 country_data = get_country(f'alpha/{country_code}')
 print(f'Country {country_code}:', country_data)
-
 
 #TRY TO GET DATA FOR NON-EXISTENT COUNTRIES
 nonexistent_countries = ['XX', 'ZZZ']
@@ -58,13 +47,22 @@ response = create_country('all', new_country_data)
 print('POST response:', response)
 
 '''
-# Try to make with a datapool from a CSV file
+#TRY TO GET DATA FOR TREE COUNTRIES (US, DE, GB)
+
+countries = ['US', 'DE', 'GB']
+for country_code in countries:
+    country_data = get_country(f'alpha/{country_code}')
+    if 'name' in country_data:
+        print(f'Country {country_code}:', country_data)
+    else:
+        print(f'Country {country_code} not found.')
+
+# TRY TO MAKE AWITH A DATAPOOL FROM A CSV FILE (SHOW MESSAGE: limitation to execute with the free subscription plan)
 def read_datapool(filename):
     with open(filename, 'r') as file:
         reader = csv.DictReader(file)
         return list(reader)
 
-# Try to Using datapool, but is a limitation to execute with the free subscription plan
 def automate_web_service(datapool):
     for data in datapool:
         # Extract test data from datapool
@@ -76,10 +74,9 @@ def automate_web_service(datapool):
         response = requests.post(url, json=data)
         return response.json()
 
-
-# Read datapool file
+#READ DATAPOOL FILE
 datapool = read_datapool('datapool.csv')
 
-# Run web service automation with the datapool
+#RUN WEBSERVICE WITH THE DATAPOOL
 automate_web_service(datapool)
 '''
