@@ -1,0 +1,3 @@
+- To validate the response for each country replace tha value in country_code
+- Try to get information for inexistent countries use nonexistent_countries
+- At the end of the main code, try to add a datapool, to test with another method each country individually, but i have the maximum rate limitation allowed on a free subscription plan 
